@@ -39,4 +39,11 @@ assert.strictEqual(written, 'https://drive.google.com/file/d/UNKNOWNUNKNOWN/view
 let set, prevented;
 copyHandler({ clipboardData: { getData: () => 'https://drive.google.com/file/d/AAAAAAAAAAAA1/view', setData: (_, t) => { set = t; } }, preventDefault: () => { prevented = true; } });
 assert.ok(prevented && set.startsWith('會議記錄_2026-01.pdf\n'));
+// 抓名稱時丟例外 → 原網址照常複製,不能讓複製失敗
+ctx.console = { warn: () => {} };
+const bad = 'https://drive.google.com/file/d/AAAAAAAAAAAA1/view';
+const saved = ctx.document.querySelector;
+ctx.document.querySelector = () => { throw new Error('boom'); };
+clip.writeText(bad); assert.strictEqual(written, bad);
+ctx.document.querySelector = saved;
 console.log('all ok');

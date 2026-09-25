@@ -36,6 +36,13 @@
 
   // 多選時 Drive 會一次複製多行網址,每行各自轉換
   function transform(text) {
+    try { return transformUnsafe(text); } catch (e) {
+      console.warn('[drive-copy-name] 抓名稱失敗,改回原網址', e);
+      return null;
+    }
+  }
+
+  function transformUnsafe(text) {
     const lines = (text || '').trim().split(/\s*\n\s*/);
     if (!lines[0] || !lines.every((l) => URL_RE.test(l))) return null;
     const out = lines.map((u) => { const n = nameOf(u); return n ? `${n}\n${u}` : u; });
