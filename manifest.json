@@ -1,0 +1,33 @@
+{
+  "manifest_version": 3,
+  "name": "Drive Copy Name + URL",
+  "version": "1.1.0",
+  "description": "Google Drive 複製連結時,自動帶上檔名(名稱 + 網址)",
+  "permissions": [
+    "activeTab"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "複製檔名 + 網址"
+  },
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Alt+Shift+C"
+      }
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://drive.google.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "world": "MAIN",
+      "run_at": "document_start",
+      "all_frames": true
+    }
+  ]
+}
