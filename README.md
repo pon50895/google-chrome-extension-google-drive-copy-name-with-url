@@ -43,7 +43,15 @@ https://drive.google.com/drive/folders/FOLDER_ID?usp=drive_link
 4. 按「**載入未封裝項目**」，選剛才下載的資料夾
 5. **已經開著的 Google 雲端硬碟分頁要重新整理一次**，功能才會生效
 
-更新：`git pull`（或重新下載），然後在 `chrome://extensions` 按這個擴充功能卡片上的重新載入圖示，再重新整理 Drive 分頁。
+## 更新（已經裝過舊版的話）
+
+1. 取得新版：在資料夾裡執行 `git pull`，或重新下載 ZIP，**解壓縮後覆蓋原本載入的那個資料夾**
+2. 開 `chrome://extensions`，找到「Drive Copy Name + URL」，按卡片右下角的 **↻ 重新載入** 圖示
+3. **把所有已開著的 Google 雲端硬碟分頁重新整理一次**
+
+第 3 步最容易漏掉：沒重新整理的分頁還在跑舊版，會看起來像沒更新或功能失效。
+
+> 如果下載到的是另一個新資料夾，Chrome 仍會讀原本的資料夾。這時請先在 `chrome://extensions` 移除舊的，再用「載入未封裝項目」選新資料夾。
 
 ## 注意事項
 
